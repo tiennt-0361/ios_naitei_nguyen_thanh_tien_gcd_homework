@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,14 +47,26 @@
                                     <constraint firstAttribute="width" secondItem="6B9-4c-WSF" secondAttribute="height" multiplier="1:1" id="GSG-28-4Pe"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrZ-TL-K9t">
+                                <rect key="frame" x="380" y="37" width="25" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zrZ-TL-K9t" secondAttribute="height" multiplier="1:1" id="E8h-hN-BPn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal">
+                                    <imageReference key="backgroundImage" image="ellipsis.circle.fill" catalog="system" renderingMode="original"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6B9-4c-WSF" firstAttribute="centerY" secondItem="BHf-fh-fQB" secondAttribute="centerY" id="3xt-Cz-uqJ"/>
+                            <constraint firstAttribute="trailing" secondItem="zrZ-TL-K9t" secondAttribute="trailing" constant="10" id="CAn-aO-cty"/>
                             <constraint firstItem="etW-cD-gP6" firstAttribute="leading" secondItem="6B9-4c-WSF" secondAttribute="trailing" constant="20" id="MOj-bI-UR9"/>
                             <constraint firstItem="etW-cD-gP6" firstAttribute="top" secondItem="BHf-fh-fQB" secondAttribute="top" constant="25" id="VAA-LE-ZTm"/>
                             <constraint firstItem="6B9-4c-WSF" firstAttribute="leading" secondItem="BHf-fh-fQB" secondAttribute="leading" constant="20" id="Xj4-Pu-Zie"/>
                             <constraint firstItem="Zpl-dv-lva" firstAttribute="leading" secondItem="6B9-4c-WSF" secondAttribute="trailing" constant="20" id="diK-Ty-985"/>
+                            <constraint firstItem="zrZ-TL-K9t" firstAttribute="centerY" secondItem="BHf-fh-fQB" secondAttribute="centerY" id="eNC-Nj-DIe"/>
                             <constraint firstItem="Zpl-dv-lva" firstAttribute="top" secondItem="etW-cD-gP6" secondAttribute="bottom" constant="2" id="kGw-md-iDD"/>
                             <constraint firstItem="6B9-4c-WSF" firstAttribute="top" secondItem="BHf-fh-fQB" secondAttribute="top" constant="10" id="yZc-NZ-kzM"/>
                         </constraints>
@@ -78,6 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

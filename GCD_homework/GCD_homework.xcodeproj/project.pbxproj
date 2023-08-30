@@ -17,6 +17,8 @@
 		BBD8387B2A9C82FF002E58A7 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD838792A9C82FF002E58A7 /* UserListCell.xib */; };
 		BBD8387D2A9C8679002E58A7 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8387C2A9C8679002E58A7 /* ConfigCell.swift */; };
 		BBD838A02A9DD8A5002E58A7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8389F2A9DD8A5002E58A7 /* Constant.swift */; };
+		BBD838A32A9DE62E002E58A7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A22A9DE62E002E58A7 /* ApiManager.swift */; };
+		BBD838A52A9EE9AB002E58A7 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A42A9EE9AB002E58A7 /* UserList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		BBD838792A9C82FF002E58A7 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		BBD8387C2A9C8679002E58A7 /* ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
 		BBD8389F2A9DD8A5002E58A7 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BBD838A22A9DE62E002E58A7 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		BBD838A42A9EE9AB002E58A7 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		BBD8385F2A9C368F002E58A7 /* GCD_homework */ = {
 			isa = PBXGroup;
 			children = (
+				BBD838A12A9DE608002E58A7 /* Api */,
 				BBD838602A9C368F002E58A7 /* AppDelegate.swift */,
 				BBD8389F2A9DD8A5002E58A7 /* Constant.swift */,
 				BBD838642A9C368F002E58A7 /* ViewController.swift */,
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD838762A9C82C9002E58A7 /* Users.swift */,
+				BBD838A42A9EE9AB002E58A7 /* UserList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,6 +99,14 @@
 				BBD8387C2A9C8679002E58A7 /* ConfigCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		BBD838A12A9DE608002E58A7 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				BBD838A22A9DE62E002E58A7 /* ApiManager.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +204,8 @@
 				BBD8387A2A9C82FF002E58A7 /* UserListCell.swift in Sources */,
 				BBD838652A9C368F002E58A7 /* ViewController.swift in Sources */,
 				BBD8387D2A9C8679002E58A7 /* ConfigCell.swift in Sources */,
+				BBD838A32A9DE62E002E58A7 /* ApiManager.swift in Sources */,
+				BBD838A52A9EE9AB002E58A7 /* UserList.swift in Sources */,
 				BBD838772A9C82C9002E58A7 /* Users.swift in Sources */,
 				BBD838612A9C368F002E58A7 /* AppDelegate.swift in Sources */,
 				BBD838A02A9DD8A5002E58A7 /* Constant.swift in Sources */,

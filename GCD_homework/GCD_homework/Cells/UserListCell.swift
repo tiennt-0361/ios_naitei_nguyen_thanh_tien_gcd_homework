@@ -1,10 +1,3 @@
-//
-//  UserListCell.swift
-//  GCD_homework
-//
-//  Created by Thanh Duong on 28/08/2023.
-//
-
 import UIKit
 
 final class UserListCell: UITableViewCell {
@@ -29,8 +22,11 @@ final class UserListCell: UITableViewCell {
         imgUser.layer.cornerRadius = ConfigCell.UserListCell.cornerRadiusImage
     }
     func setUser(user: Users) {
-        imgUser.image = UIImage(named: user.avtUrl)
-        userName.text = user.userName
+        ApiManager.shared.getImg(url: user.avtUrl) { [weak self] image in
+            guard let self = self else { return }
+            self.imgUser.image = image
+        }
+        userName.text = user.loginName
         userLink.text = user.link
     }
 }
