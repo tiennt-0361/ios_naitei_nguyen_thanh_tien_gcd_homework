@@ -19,6 +19,9 @@
 		BBD838A02A9DD8A5002E58A7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8389F2A9DD8A5002E58A7 /* Constant.swift */; };
 		BBD838A32A9DE62E002E58A7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A22A9DE62E002E58A7 /* ApiManager.swift */; };
 		BBD838A52A9EE9AB002E58A7 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A42A9EE9AB002E58A7 /* UserList.swift */; };
+		BBD838A72AA036D1002E58A7 /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A62AA036D0002E58A7 /* DetailProfileViewController.swift */; };
+		BBD838AA2AA04476002E58A7 /* FavoriteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838A92AA04476002E58A7 /* FavoriteUserViewController.swift */; };
+		BBD838AE2AA072EF002E58A7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838AD2AA072EE002E58A7 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		BBD8389F2A9DD8A5002E58A7 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BBD838A22A9DE62E002E58A7 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		BBD838A42A9EE9AB002E58A7 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		BBD838A62AA036D0002E58A7 /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		BBD838A92AA04476002E58A7 /* FavoriteUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserViewController.swift; sourceTree = "<group>"; };
+		BBD838AD2AA072EE002E58A7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +74,10 @@
 		BBD8385F2A9C368F002E58A7 /* GCD_homework */ = {
 			isa = PBXGroup;
 			children = (
+				BBD838A82AA0443E002E58A7 /* ViewController */,
 				BBD838A12A9DE608002E58A7 /* Api */,
 				BBD838602A9C368F002E58A7 /* AppDelegate.swift */,
 				BBD8389F2A9DD8A5002E58A7 /* Constant.swift */,
-				BBD838642A9C368F002E58A7 /* ViewController.swift */,
 				BBD838662A9C368F002E58A7 /* Main.storyboard */,
 				BBD838692A9C3693002E58A7 /* Assets.xcassets */,
 				BBD838742A9C82AA002E58A7 /* Models */,
@@ -87,6 +93,7 @@
 			children = (
 				BBD838762A9C82C9002E58A7 /* Users.swift */,
 				BBD838A42A9EE9AB002E58A7 /* UserList.swift */,
+				BBD838AD2AA072EE002E58A7 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +114,16 @@
 				BBD838A22A9DE62E002E58A7 /* ApiManager.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		BBD838A82AA0443E002E58A7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD838A62AA036D0002E58A7 /* DetailProfileViewController.swift */,
+				BBD838642A9C368F002E58A7 /* ViewController.swift */,
+				BBD838A92AA04476002E58A7 /* FavoriteUserViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,13 +218,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD838A72AA036D1002E58A7 /* DetailProfileViewController.swift in Sources */,
 				BBD8387A2A9C82FF002E58A7 /* UserListCell.swift in Sources */,
 				BBD838652A9C368F002E58A7 /* ViewController.swift in Sources */,
 				BBD8387D2A9C8679002E58A7 /* ConfigCell.swift in Sources */,
 				BBD838A32A9DE62E002E58A7 /* ApiManager.swift in Sources */,
+				BBD838AE2AA072EF002E58A7 /* Repository.swift in Sources */,
 				BBD838A52A9EE9AB002E58A7 /* UserList.swift in Sources */,
 				BBD838772A9C82C9002E58A7 /* Users.swift in Sources */,
 				BBD838612A9C368F002E58A7 /* AppDelegate.swift in Sources */,
+				BBD838AA2AA04476002E58A7 /* FavoriteUserViewController.swift in Sources */,
 				BBD838A02A9DD8A5002E58A7 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

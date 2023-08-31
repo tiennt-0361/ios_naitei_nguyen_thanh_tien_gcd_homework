@@ -51,7 +51,15 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return ConfigCell.UserListCell.cellHigh
-        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            if let detailUser = storyboard?.instantiateViewController(
+                withIdentifier: Constant.Value.DetailProfileSceneIndentifier) as? DetailProfileViewController {
+                detailUser.userTarget = viewUsers[indexPath.row]
+                self.navigationController?.pushViewController(detailUser, animated: true)
+            }
+    }
 }
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
