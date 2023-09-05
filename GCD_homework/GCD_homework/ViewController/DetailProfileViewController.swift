@@ -1,6 +1,6 @@
 import UIKit
-
 final class DetailProfileViewController: UIViewController {
+    @IBOutlet private weak var favoriteBtn: UIButton!
     @IBOutlet private weak var imgUser: UIImageView!
     @IBOutlet private weak var loginName: UILabel!
     @IBOutlet private weak var link: UILabel!
@@ -10,10 +10,12 @@ final class DetailProfileViewController: UIViewController {
     @IBOutlet private weak var followers: UILabel!
     @IBOutlet private weak var repository: UILabel!
     @IBOutlet private weak var tableControl: UISegmentedControl!
-    var userTarget: Users?
-    private var viewUser: [Users] = []
-    private var followerUser: [Users] = []
-    private var followingUser: [Users] = []
+    private let database = DatabaseManager()
+    private var userTarget: Users?
+    private var viewUsers: [Users] = []
+    private var followerUsers: [Users] = []
+    private var followingUsers: [Users] = []
+    private var favoriteUser: FavoriteUser?
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFollow()
@@ -28,7 +30,8 @@ final class DetailProfileViewController: UIViewController {
     }
     private func config() {
         guard let user = userTarget else { return }
-        ApiManager.shared.getImg(url: user.avtUrl) { [weak self] image in
+        guard let avtUrl = user.avtUrl else { return }
+        ApiManager.shared.getImg(url: avtUrl) { [weak self] image in
             guard let self = self else { return }
             self.imgUser.image = image
         }
@@ -39,18 +42,19 @@ final class DetailProfileViewController: UIViewController {
     }
     private func fetchFollow() {
         guard let user = userTarget else { return }
-        let followingGetUrl = user.followingUrl.components(separatedBy: "{").first!
-        let followerGetUrl = user.followersUrl
-        let reposGetUrl = user.reposUrl
+        guard let followingUrl = user.followingUrl else { return }
+        guard let reposGetUrl = user.reposUrl else { return }
+        let followingGetUrl = followingUrl.components(separatedBy: "{").first!
+        guard let followerGetUrl = user.followersUrl else { return }
         ApiManager.shared.request(
             url: followerGetUrl,
             type: [Users].self,
             completionHandler: { [weak self] userList in
-            self?.followerUser = userList
+            self?.followerUsers = userList
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.followers.text = "\(self.followerUser.count)"
-                self.viewUser = self.followerUser
+                self.followers.text = "\(self.followerUsers.count)"
+                self.viewUsers = self.followerUsers
                 self.userTableView.reloadData()
             }
         }, failureHandler: {
@@ -60,10 +64,10 @@ final class DetailProfileViewController: UIViewController {
             url: followingGetUrl,
             type: [Users].self,
             completionHandler: { [weak self] userList in
-            self?.followingUser = userList
+            self?.followingUsers = userList
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.following.text = "\(self.followingUser.count)"
+                self.following.text = "\(self.followingUsers.count)"
             }
         }, failureHandler: {
             print("Error fetching API")
@@ -79,12 +83,43 @@ final class DetailProfileViewController: UIViewController {
         }, failureHandler: {
             print("Error fetching API")
         })
+        favoriteUser = database.checkFavorite(userTarget: user)
+        if favoriteUser != nil {
+            updateFavouriteButton()
+        }
     }
-    @IBAction func changedValueTableControl(_ sender: Any) {
-        if tableControl.selectedSegmentIndex == 0 {
-            viewUser = followerUser
+    private func updateFavouriteButton() {
+        if favoriteUser != nil {
+            favoriteBtn.setImage(UIImage(systemName: Constant.FavoriteButton.fill), for: .normal)
         } else {
-            viewUser = followingUser
+            favoriteBtn.setImage(UIImage(systemName: Constant.FavoriteButton.notFill), for: .normal)
+        }
+    }
+    func setUser(user: Users) {
+        self.userTarget = user
+    }
+    @IBAction private func favoriteBtnTouchUp(_ sender: Any) {
+        guard let user = userTarget else { return }
+        if let favouriteUser = favoriteUser {
+            database.context.delete(favouriteUser)
+            self.favoriteUser = nil
+        } else {
+            favoriteUser = FavoriteUser(context: database.context)
+            favoriteUser?.githubLink = user.link
+            favoriteUser?.loginName = user.loginName
+            favoriteUser?.avtImgUrl = user.avtUrl
+            favoriteUser?.followerUrl = user.followersUrl
+            favoriteUser?.followingUrl = user.followersUrl
+            favoriteUser?.reposUrl = user.reposUrl
+        }
+        try? database.context.save()
+        updateFavouriteButton()
+    }
+    @IBAction private func changedValueTableControl(_ sender: Any) {
+        if tableControl.selectedSegmentIndex == 0 {
+            viewUsers = followerUsers
+        } else {
+            viewUsers = followingUsers
         }
         userTableView.reloadData()
     }
@@ -93,18 +128,24 @@ extension DetailProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ConfigCell.UserListCell.cellHigh
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let detailUser = storyboard?.instantiateViewController(
+            withIdentifier: Constant.Value.DetailProfileSceneIndentifier) as? DetailProfileViewController {
+            detailUser.userTarget = viewUsers[indexPath.row]
+            self.navigationController?.pushViewController(detailUser, animated: true)
+        }
+    }
 }
 extension DetailProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewUser.count
+        return viewUsers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constant.Value.userListCellIndentifier)
-                as? UserListCell else {
-            return UITableViewCell()
-        }
-        cell.setUser(user: viewUser[indexPath.row])
+                as? UserListCell else { return UITableViewCell() }
+        cell.setUser(user: viewUsers[indexPath.row])
         return cell
     }
 }

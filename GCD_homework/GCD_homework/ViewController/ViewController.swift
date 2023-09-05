@@ -3,8 +3,8 @@ import UIKit
 final class ViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var userTableView: UITableView!
-    var users: [Users] = []
-    var viewUsers: [Users] = []
+    private var users: [Users] = []
+    private var viewUsers: [Users] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
@@ -50,15 +50,15 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return ConfigCell.UserListCell.cellHigh
+        return ConfigCell.UserListCell.cellHigh
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            if let detailUser = storyboard?.instantiateViewController(
-                withIdentifier: Constant.Value.DetailProfileSceneIndentifier) as? DetailProfileViewController {
-                detailUser.userTarget = viewUsers[indexPath.row]
-                self.navigationController?.pushViewController(detailUser, animated: true)
-            }
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let detailUser = storyboard?.instantiateViewController(
+            withIdentifier: Constant.Value.DetailProfileSceneIndentifier) as? DetailProfileViewController {
+            detailUser.setUser(user: viewUsers[indexPath.row])
+            self.navigationController?.pushViewController(detailUser, animated: true)
+        }
     }
 }
 extension ViewController: UISearchBarDelegate {
@@ -70,7 +70,8 @@ extension ViewController: UISearchBarDelegate {
             viewUsers = users
         } else {
             viewUsers = users.filter({ user in
-                user.loginName.localizedCaseInsensitiveContains(searchText)
+                guard let loginName = user.loginName else { return false }
+                return loginName.localizedCaseInsensitiveContains(searchText)
             })
         }
         userTableView.reloadData()

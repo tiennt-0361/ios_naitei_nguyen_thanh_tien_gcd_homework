@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G1351" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="FavoriteUser">
+    <entity name="FavoriteUser" representedClassName=".FavoriteUser" syncable="YES" codeGenerationType="class" coreSpotlightDisplayNameExpression="FavoriteUser">
+        <attribute name="avtImgUrl" optional="YES" attributeType="String"/>
+        <attribute name="followerUrl" optional="YES" attributeType="String"/>
+        <attribute name="followingUrl" optional="YES" attributeType="String"/>
+        <attribute name="githubLink" optional="YES" attributeType="String"/>
+        <attribute name="loginName" optional="YES" attributeType="String"/>
+        <attribute name="reposUrl" optional="YES" attributeType="String"/>
+    </entity>
+    <fetchRequest name="fetchAllFavoriteUserRequest" entity="FavoriteUser"/>
+    <elements>
+        <element name="FavoriteUser" positionX="-63" positionY="-18" width="128" height="133"/>
+    </elements>
+</model>

@@ -22,7 +22,8 @@ final class UserListCell: UITableViewCell {
         imgUser.layer.cornerRadius = ConfigCell.UserListCell.cornerRadiusImage
     }
     func setUser(user: Users) {
-        ApiManager.shared.getImg(url: user.avtUrl) { [weak self] image in
+        guard let avtUrl = user.avtUrl else {return }
+        ApiManager.shared.getImg(url: avtUrl) { [weak self] image in
             guard let self = self else { return }
             self.imgUser.image = image
         }

@@ -19,4 +19,8 @@ class Constant {
     struct Query {
         static let getUserQuery = "users?q=abc"
     }
+    struct FavoriteButton {
+        static let fill = "heart.fill"
+        static let notFill = "heart"
+    }
 }

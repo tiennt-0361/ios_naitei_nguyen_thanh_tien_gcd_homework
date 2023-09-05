@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB6564682AA6D966004CE428 /* FavoriteUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB6564662AA6D966004CE428 /* FavoriteUser.xcdatamodeld */; };
+		BB65646C2AA710EA004CE428 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65646B2AA710E9004CE428 /* DatabaseManager.swift */; };
+		BB65646E2AA729BB004CE428 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65646D2AA729BA004CE428 /* CoreDataManager.swift */; };
 		BBD838612A9C368F002E58A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838602A9C368F002E58A7 /* AppDelegate.swift */; };
 		BBD838652A9C368F002E58A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD838642A9C368F002E58A7 /* ViewController.swift */; };
 		BBD838682A9C368F002E58A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD838662A9C368F002E58A7 /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB6564672AA6D966004CE428 /* FavoriteUser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteUser.xcdatamodel; sourceTree = "<group>"; };
+		BB65646B2AA710E9004CE428 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		BB65646D2AA729BA004CE428 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BBD8385D2A9C368F002E58A7 /* GCD_homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCD_homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD838602A9C368F002E58A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD838642A9C368F002E58A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +61,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB6564652AA6D943004CE428 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				BB6564662AA6D966004CE428 /* FavoriteUser.xcdatamodeld */,
+				BB65646B2AA710E9004CE428 /* DatabaseManager.swift */,
+				BB65646D2AA729BA004CE428 /* CoreDataManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		BBD838542A9C368F002E58A7 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +90,7 @@
 		BBD8385F2A9C368F002E58A7 /* GCD_homework */ = {
 			isa = PBXGroup;
 			children = (
+				BB6564652AA6D943004CE428 /* Database */,
 				BBD838A82AA0443E002E58A7 /* ViewController */,
 				BBD838A12A9DE608002E58A7 /* Api */,
 				BBD838602A9C368F002E58A7 /* AppDelegate.swift */,
@@ -220,14 +237,17 @@
 			files = (
 				BBD838A72AA036D1002E58A7 /* DetailProfileViewController.swift in Sources */,
 				BBD8387A2A9C82FF002E58A7 /* UserListCell.swift in Sources */,
+				BB65646C2AA710EA004CE428 /* DatabaseManager.swift in Sources */,
 				BBD838652A9C368F002E58A7 /* ViewController.swift in Sources */,
 				BBD8387D2A9C8679002E58A7 /* ConfigCell.swift in Sources */,
+				BB6564682AA6D966004CE428 /* FavoriteUser.xcdatamodeld in Sources */,
 				BBD838A32A9DE62E002E58A7 /* ApiManager.swift in Sources */,
 				BBD838AE2AA072EF002E58A7 /* Repository.swift in Sources */,
 				BBD838A52A9EE9AB002E58A7 /* UserList.swift in Sources */,
 				BBD838772A9C82C9002E58A7 /* Users.swift in Sources */,
 				BBD838612A9C368F002E58A7 /* AppDelegate.swift in Sources */,
 				BBD838AA2AA04476002E58A7 /* FavoriteUserViewController.swift in Sources */,
+				BB65646E2AA729BB004CE428 /* CoreDataManager.swift in Sources */,
 				BBD838A02A9DD8A5002E58A7 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +448,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB6564662AA6D966004CE428 /* FavoriteUser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB6564672AA6D966004CE428 /* FavoriteUser.xcdatamodel */,
+			);
+			currentVersion = BB6564672AA6D966004CE428 /* FavoriteUser.xcdatamodel */;
+			path = FavoriteUser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBD838552A9C368F002E58A7 /* Project object */;
 }
